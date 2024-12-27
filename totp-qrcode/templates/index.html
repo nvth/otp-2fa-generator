@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Generator</title>
+    <style>
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="/upload">Upload QR code</a>
+        <a href="#">Contact</a>
+
+    </nav>
+
+    <h1>Your OTP</h1>
+    <div>
+        {% for item in otp_list %}
+            <p><strong>Account name:</strong> {{ item['qr_name'] }}</p>
+            <p><strong>OTP:</strong> {{ item['otp'] }}</p>
+        {% endfor %}
+       
+    </div>
+    
+    <script>
+        document.getElementById('refreshLink').addEventListener('click', function() {
+            refreshPage();
+        });
+
+        function refreshPage() {
+            location.reload();
+        }
+    </script>
+    <a href="#" onclick="refreshPage()">Refresh Page</a>
+</body>
+</html>
